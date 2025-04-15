@@ -1,40 +1,62 @@
 <?php
 
-namespace GurmeInvoice;
+namespace GurmeInvoice\Resource;
 
-use GurmeInvoice\Invoice\Customer;
-use GurmeInvoice\Invoice\Line;
-use GurmeInvoice\Invoice\Shipment;
+use GurmeInvoice\Resource\Invoice\Customer;
+use GurmeInvoice\Resource\Invoice\Line;
+use GurmeInvoice\Resource\Invoice\Shipment;
 
 class Invoice
 {
     protected int $saleChannelId;
+
     protected int $invoiceIntegrationId;
+
     protected string $type;
+
     protected string $orderId;
+
     protected string $orderDId;
+
     protected string $orderCreatedAt;
+
     protected string $currency;
+
     protected float $currencyRate;
+
     protected string $issueDate;
+
     protected string $issueTime;
+
     protected string $waybillNumber;
+
     protected string $waybillDate;
+
     protected bool $cashSale;
+
     protected string $dueDate;
+
     protected string $paymentDate;
+
     protected ?string $callbackUrl = null;
+
     protected Customer $customer;
+
     protected array $lines = [];
+
     protected bool $isInternetSale = false;
+
     protected array $internetSale = [];
+
     protected bool $isNeedShipment = false;
+
     protected ?Shipment $shipment = null;
 
     public function setSaleChannelId(int $value): void
     {
         $this->saleChannelId = $value;
     }
+
     public function getSaleChannelId(): int
     {
         return $this->saleChannelId;
@@ -44,6 +66,7 @@ class Invoice
     {
         $this->invoiceIntegrationId = $value;
     }
+
     public function getInvoiceIntegrationId(): int
     {
         return $this->invoiceIntegrationId;
@@ -53,6 +76,7 @@ class Invoice
     {
         $this->type = $value;
     }
+
     public function getType(): string
     {
         return $this->type;
@@ -62,6 +86,7 @@ class Invoice
     {
         $this->orderId = $value;
     }
+
     public function getOrderId(): string
     {
         return $this->orderId;
@@ -71,6 +96,7 @@ class Invoice
     {
         $this->orderDId = $value;
     }
+
     public function getOrderDId(): string
     {
         return $this->orderDId;
@@ -80,6 +106,7 @@ class Invoice
     {
         $this->orderCreatedAt = $value;
     }
+
     public function getOrderCreatedAt(): string
     {
         return $this->orderCreatedAt;
@@ -89,6 +116,7 @@ class Invoice
     {
         $this->currency = $value;
     }
+
     public function getCurrency(): string
     {
         return $this->currency;
@@ -98,6 +126,7 @@ class Invoice
     {
         $this->currencyRate = $value;
     }
+
     public function getCurrencyRate(): float
     {
         return $this->currencyRate;
@@ -107,6 +136,7 @@ class Invoice
     {
         $this->issueDate = $value;
     }
+
     public function getIssueDate(): string
     {
         return $this->issueDate;
@@ -116,6 +146,7 @@ class Invoice
     {
         $this->issueTime = $value;
     }
+
     public function getIssueTime(): string
     {
         return $this->issueTime;
@@ -125,6 +156,7 @@ class Invoice
     {
         $this->waybillNumber = $value;
     }
+
     public function getWaybillNumber(): string
     {
         return $this->waybillNumber;
@@ -134,6 +166,7 @@ class Invoice
     {
         $this->waybillDate = $value;
     }
+
     public function getWaybillDate(): string
     {
         return $this->waybillDate;
@@ -143,6 +176,7 @@ class Invoice
     {
         $this->cashSale = $value;
     }
+
     public function getCashSale(): bool
     {
         return $this->cashSale;
@@ -152,6 +186,7 @@ class Invoice
     {
         $this->dueDate = $value;
     }
+
     public function getDueDate(): string
     {
         return $this->dueDate;
@@ -161,6 +196,7 @@ class Invoice
     {
         $this->paymentDate = $value;
     }
+
     public function getPaymentDate(): string
     {
         return $this->paymentDate;
@@ -170,6 +206,7 @@ class Invoice
     {
         $this->callbackUrl = $value;
     }
+
     public function getCallbackUrl(): ?string
     {
         return $this->callbackUrl;
@@ -179,6 +216,7 @@ class Invoice
     {
         $this->customer = $customer;
     }
+
     public function getCustomer(): Customer
     {
         return $this->customer;
@@ -188,6 +226,7 @@ class Invoice
     {
         $this->lines[] = $line;
     }
+
     public function getLines(): array
     {
         return $this->lines;
@@ -197,6 +236,7 @@ class Invoice
     {
         $this->isInternetSale = $value;
     }
+
     public function getIsInternetSale(): bool
     {
         return $this->isInternetSale;
@@ -206,6 +246,7 @@ class Invoice
     {
         $this->internetSale = $value;
     }
+
     public function getInternetSale(): array
     {
         return $this->internetSale;
@@ -215,6 +256,7 @@ class Invoice
     {
         $this->isNeedShipment = $value;
     }
+
     public function getIsNeedShipment(): bool
     {
         return $this->isNeedShipment;
@@ -224,6 +266,7 @@ class Invoice
     {
         $this->shipment = $shipment;
     }
+
     public function getShipment(): ?Shipment
     {
         return $this->shipment;
@@ -249,11 +292,11 @@ class Invoice
             'payment_date' => $this->paymentDate,
             'callback_url' => $this->callbackUrl,
             'customer' => $this->customer->toArray(),
-            'lines' => array_map(fn($line) => $line->toArray(), $this->lines),
+            'lines' => array_map(fn ($line) => $line->toArray(), $this->lines),
             'is_internet_sale' => $this->isInternetSale,
             'internet_sale' => $this->internetSale,
             'is_need_shipment' => $this->isNeedShipment,
-            'shipment' => $this->shipment?->toArray()
+            'shipment' => $this->shipment?->toArray(),
         ];
     }
 }

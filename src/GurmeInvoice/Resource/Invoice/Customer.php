@@ -1,29 +1,44 @@
 <?php
 
-namespace GurmeInvoice\Invoice;
+namespace GurmeInvoice\Resource\Invoice;
 
 class Customer
 {
     protected int $id;
+
     protected string $type;
+
     protected string $taxNumber;
+
     protected string $taxOffice;
+
     protected string $title;
+
     protected string $name;
+
     protected string $surname;
+
     protected string $phone;
+
     protected string $email;
+
     protected string $address;
+
     protected string $district;
+
     protected string $city;
+
     protected string $country;
+
     protected string $postcode;
+
     protected string $iban;
 
     public function setId(int $id): void
     {
         $this->id = $id;
     }
+
     public function getId(): int
     {
         return $this->id;
@@ -33,6 +48,7 @@ class Customer
     {
         $this->type = $type;
     }
+
     public function getType(): string
     {
         return $this->type;
@@ -42,6 +58,7 @@ class Customer
     {
         $this->taxNumber = $taxNumber;
     }
+
     public function getTaxNumber(): string
     {
         return $this->taxNumber;
@@ -51,6 +68,7 @@ class Customer
     {
         $this->taxOffice = $taxOffice;
     }
+
     public function getTaxOffice(): string
     {
         return $this->taxOffice;
@@ -60,6 +78,7 @@ class Customer
     {
         $this->title = $title;
     }
+
     public function getTitle(): string
     {
         return $this->title;
@@ -69,6 +88,7 @@ class Customer
     {
         $this->name = $name;
     }
+
     public function getName(): string
     {
         return $this->name;
@@ -78,6 +98,7 @@ class Customer
     {
         $this->surname = $surname;
     }
+
     public function getSurname(): string
     {
         return $this->surname;
@@ -87,6 +108,7 @@ class Customer
     {
         $this->phone = $phone;
     }
+
     public function getPhone(): string
     {
         return $this->phone;
@@ -96,6 +118,7 @@ class Customer
     {
         $this->email = $email;
     }
+
     public function getEmail(): string
     {
         return $this->email;
@@ -105,6 +128,7 @@ class Customer
     {
         $this->address = $address;
     }
+
     public function getAddress(): string
     {
         return $this->address;
@@ -114,6 +138,7 @@ class Customer
     {
         $this->district = $district;
     }
+
     public function getDistrict(): string
     {
         return $this->district;
@@ -123,6 +148,7 @@ class Customer
     {
         $this->city = $city;
     }
+
     public function getCity(): string
     {
         return $this->city;
@@ -132,6 +158,7 @@ class Customer
     {
         $this->country = $country;
     }
+
     public function getCountry(): string
     {
         return $this->country;
@@ -141,6 +168,7 @@ class Customer
     {
         $this->postcode = $postcode;
     }
+
     public function getPostcode(): string
     {
         return $this->postcode;
@@ -150,6 +178,7 @@ class Customer
     {
         $this->iban = $iban;
     }
+
     public function getIban(): string
     {
         return $this->iban;
@@ -172,7 +201,7 @@ class Customer
             'city' => $this->city,
             'country' => $this->country,
             'postcode' => $this->postcode,
-            'iban' => $this->iban
+            'iban' => $this->iban,
         ];
     }
 }

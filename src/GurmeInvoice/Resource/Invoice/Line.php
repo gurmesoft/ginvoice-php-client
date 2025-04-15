@@ -1,24 +1,34 @@
 <?php
 
-namespace GurmeInvoice\Invoice;
+namespace GurmeInvoice\Resource\Invoice;
 
 class Line
 {
     private int $id;
+
     private string $name;
+
     private string $description;
+
     private string $sku;
+
     private int $quantity;
+
     private string $unit;
+
     private float $unitPrice;
+
     private string $discountType;
+
     private float $discount;
+
     private float $taxRate;
 
     public function setId(int $id): void
     {
         $this->id = $id;
     }
+
     public function getId(): int
     {
         return $this->id;
@@ -28,6 +38,7 @@ class Line
     {
         $this->name = $name;
     }
+
     public function getName(): string
     {
         return $this->name;
@@ -37,6 +48,7 @@ class Line
     {
         $this->description = $description;
     }
+
     public function getDescription(): string
     {
         return $this->description;
@@ -46,6 +58,7 @@ class Line
     {
         $this->sku = $sku;
     }
+
     public function getSku(): string
     {
         return $this->sku;
@@ -55,6 +68,7 @@ class Line
     {
         $this->quantity = $quantity;
     }
+
     public function getQuantity(): int
     {
         return $this->quantity;
@@ -64,6 +78,7 @@ class Line
     {
         $this->unit = $unit;
     }
+
     public function getUnit(): string
     {
         return $this->unit;
@@ -73,6 +88,7 @@ class Line
     {
         $this->unitPrice = $unitPrice;
     }
+
     public function getUnitPrice(): float
     {
         return $this->unitPrice;
@@ -82,6 +98,7 @@ class Line
     {
         $this->discountType = $discountType;
     }
+
     public function getDiscountType(): string
     {
         return $this->discountType;
@@ -91,6 +108,7 @@ class Line
     {
         $this->discount = $discount;
     }
+
     public function getDiscount(): float
     {
         return $this->discount;
@@ -100,6 +118,7 @@ class Line
     {
         $this->taxRate = $taxRate;
     }
+
     public function getTaxRate(): float
     {
         return $this->taxRate;
@@ -117,7 +136,7 @@ class Line
             'unit_price' => $this->unitPrice,
             'discount_type' => $this->discountType,
             'discount' => $this->discount,
-            'tax_rate' => $this->taxRate
+            'tax_rate' => $this->taxRate,
         ];
     }
 }

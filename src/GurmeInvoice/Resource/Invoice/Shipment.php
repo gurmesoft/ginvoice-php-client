@@ -1,19 +1,24 @@
 <?php
 
-namespace GurmeInvoice\Invoice;
+namespace GurmeInvoice\Resource\Invoice;
 
 class Shipment
 {
     protected string $companyTitle;
+
     protected string $companyTaxNumber;
+
     protected string $courierName;
+
     protected string $courierTaxNumber;
+
     protected string $deliveryDate;
 
     public function setCompanyTitle(string $companyTitle): void
     {
         $this->companyTitle = $companyTitle;
     }
+
     public function getCompanyTitle(): string
     {
         return $this->companyTitle;
@@ -23,6 +28,7 @@ class Shipment
     {
         $this->companyTaxNumber = $companyTaxNumber;
     }
+
     public function getCompanyTaxNumber(): string
     {
         return $this->companyTaxNumber;
@@ -32,6 +38,7 @@ class Shipment
     {
         $this->courierName = $courierName;
     }
+
     public function getCourierName(): string
     {
         return $this->courierName;
@@ -41,6 +48,7 @@ class Shipment
     {
         $this->courierTaxNumber = $courierTaxNumber;
     }
+
     public function getCourierTaxNumber(): string
     {
         return $this->courierTaxNumber;
@@ -50,6 +58,7 @@ class Shipment
     {
         $this->deliveryDate = $deliveryDate;
     }
+
     public function getDeliveryDate(): string
     {
         return $this->deliveryDate;
@@ -62,7 +71,7 @@ class Shipment
             'company_tax_number' => $this->companyTaxNumber,
             'courier_name' => $this->courierName,
             'courier_tax_number' => $this->courierTaxNumber,
-            'delivery_date' => $this->deliveryDate
+            'delivery_date' => $this->deliveryDate,
         ];
     }
 }
