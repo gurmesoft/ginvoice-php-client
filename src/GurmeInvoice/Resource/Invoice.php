@@ -4,5 +4,5 @@ namespace GurmeInvoice\Resource;
 
 class Invoice extends Base
 {
-    protected string $endpoint = 'invoices';
+    public string $endpoint = 'invoices';
 }

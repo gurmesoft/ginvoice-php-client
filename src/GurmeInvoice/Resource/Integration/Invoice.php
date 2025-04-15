@@ -6,5 +6,5 @@ use GurmeInvoice\Resource\Base;
 
 class Invoice extends Base
 {
-    protected string $endpoint = 'integrations/invoice';
+    public string $endpoint = 'integrations/invoice';
 }

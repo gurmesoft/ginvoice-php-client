@@ -7,7 +7,7 @@ use GurmeInvoice\Request;
 
 abstract class Base
 {
-    protected $endpoint = '';
+    public string $endpoint = '';
 
     protected Options $options;
 

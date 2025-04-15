@@ -13,9 +13,11 @@ class Options
         return $this->apiKey;
     }
 
-    public function setApiKey($apiKey)
+    public function setApiKey($apiKey): self
     {
         $this->apiKey = $apiKey;
+
+        return $this;
     }
 
     public function getEnv()
@@ -23,8 +25,10 @@ class Options
         return $this->env;
     }
 
-    public function setEnv(Enum\Env $env)
+    public function setEnv(Enum\Env $env): self
     {
         $this->env = $env;
+
+        return $this;
     }
 }
