@@ -5,7 +5,7 @@ namespace GurmeInvoice\Resource;
 use GurmeInvoice\Options;
 use GurmeInvoice\Request;
 
-abstract class Resource
+abstract class Base
 {
     protected $endpoint = '';
 
