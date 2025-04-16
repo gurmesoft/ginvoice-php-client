@@ -30,15 +30,13 @@ class Request
 
         curl_close($ch);
 
-        dd($this->getUrl($endpoint), $response, $httpCode);
-
         /**
          * TODO: Handle errors
          */
         if ($httpCode >= 200 && $httpCode < 300) {
             return json_decode($response, true);
         } else {
-            throw new \Exception('Request failed with status code '.$httpCode);
+            throw new \Exception('Request failed with status code ' . $httpCode);
         }
     }
 
@@ -52,9 +50,9 @@ class Request
     protected function getHeaders()
     {
         return [
-            'Content-Type' => 'application/json',
-            'Accept' => 'application/json',
-            'Authorization' => 'Bearer '.$this->options->getApiKey(),
+            'Content-Type: application/json',
+            'Accept: application/json',
+            'Authorization: Bearer ' . $this->options->getApiKey(),
         ];
     }
 }
