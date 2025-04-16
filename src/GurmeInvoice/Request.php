@@ -30,11 +30,14 @@ class Request
 
         curl_close($ch);
 
-        /**
-         * TODO: Handle errors
-         */
         if ($httpCode >= 200 && $httpCode < 300) {
-            return json_decode($response, true);
+            $encoded_data = json_decode($response, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                return $response;
+            }
+
+            return $encoded_data;
         } else {
             throw new \Exception('Request failed with status code ' . $httpCode);
         }
