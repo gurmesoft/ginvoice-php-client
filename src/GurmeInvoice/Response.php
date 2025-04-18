@@ -10,17 +10,10 @@ class Response
 
     private $array = [];
 
-    private $error = false;
-
     public function __construct($response, $code)
     {
         $this->response = $response;
         $this->code = $code;
-        $this->convertToArray();
-
-        if (! $this->success()) {
-            $this->prepareError();
-        }
     }
 
     public function status()
@@ -35,7 +28,9 @@ class Response
 
     public function toArray($key = false)
     {
-        if (! $key) {
+        $this->array = json_decode($this->response, true) ?: [];
+
+        if (!$key) {
             return $this->array;
         }
 
@@ -53,20 +48,6 @@ class Response
 
     public function errorMessage()
     {
-        return $this->error;
-    }
-
-    private function prepareError()
-    {
-        $this->error = $this->toArray('message');
-    }
-
-    private function convertToArray()
-    {
-        $this->array = json_decode($this->response, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            $this->array = [];
-        }
+        return $this->toArray('message');
     }
 }
