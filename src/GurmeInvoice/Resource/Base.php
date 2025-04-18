@@ -21,36 +21,26 @@ abstract class Base
 
     public function store($data)
     {
-        return $this->getData($this->request->send('POST', $this->endpoint, $data));
+        return $this->request->send('POST', $this->endpoint, $data);
     }
 
     public function update($data)
     {
-        return $this->getData($this->request->send('PATCH', $this->endpoint, $data));
+        return $this->request->send('PATCH', $this->endpoint, $data);
     }
 
     public function delete()
     {
-        return $this->getData($this->request->send('DELETE', $this->endpoint));
+        return $this->request->send('DELETE', $this->endpoint);
     }
 
     public function show()
     {
-        return $this->getData($this->request->send('GET', $this->endpoint));
+        return $this->request->send('GET', $this->endpoint);
     }
 
     public function index()
     {
-        return $this->getData($this->request->send('GET', $this->endpoint));
-    }
-
-    private function getData($response)
-    {
-
-        if (is_array($response) && isset($response['data'])) {
-            return $response['data'];
-        }
-
-        return $response;
+        return $this->request->send('GET', $this->endpoint);
     }
 }

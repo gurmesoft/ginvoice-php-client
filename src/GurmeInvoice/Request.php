@@ -11,7 +11,7 @@ class Request
         $this->options = $options;
     }
 
-    public function send($method, $endpoint, $data = [])
+    public function send($method, $endpoint, $data = []): Response
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->getUrl($endpoint));
@@ -26,21 +26,11 @@ class Request
         }
 
         $response = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         curl_close($ch);
 
-        if ($httpCode >= 200 && $httpCode < 300) {
-            $encoded_data = json_decode($response, true);
-
-            if (json_last_error() !== JSON_ERROR_NONE) {
-                return $response;
-            }
-
-            return $encoded_data;
-        } else {
-            throw new \Exception('Request failed with status code ' . $httpCode);
-        }
+        return new Response($response, $code);
     }
 
     protected function getUrl($endpoint)
