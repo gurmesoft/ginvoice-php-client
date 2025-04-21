@@ -30,7 +30,7 @@ class Response
     {
         $this->array = json_decode($this->response, true) ?: [];
 
-        if (!$key) {
+        if (! $key) {
             return $this->array;
         }
 
@@ -39,6 +39,11 @@ class Response
         }
 
         return false;
+    }
+
+    public function json()
+    {
+        return json_decode($this->response) ?: false;
     }
 
     public function success()
