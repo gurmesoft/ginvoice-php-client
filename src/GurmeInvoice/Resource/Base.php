@@ -29,14 +29,14 @@ abstract class Base
         return $this->request->send('PATCH', $this->endpoint, $data);
     }
 
-    public function delete()
+    public function destroy($id)
     {
-        return $this->request->send('DELETE', $this->endpoint);
+        return $this->request->send('DELETE', $this->endpoint . '/' . $id);
     }
 
-    public function show()
+    public function show($id)
     {
-        return $this->request->send('GET', $this->endpoint);
+        return $this->request->send('GET', $this->endpoint . '/' . $id);
     }
 
     public function index()

@@ -19,8 +19,9 @@ class Request
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->getHeaders());
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
 
-        if ($method === 'POST') {
+        if (in_array($method, ['POST', 'PUT', 'PATCH'])) {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         }
