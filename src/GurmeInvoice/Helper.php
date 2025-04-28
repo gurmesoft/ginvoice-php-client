@@ -18,4 +18,14 @@ class Helper
     {
         return $this->request->send('POST', 'check/auth');
     }
+
+    public function formalizeInvoice($id)
+    {
+        return $this->request->send('GET', "formalize/{$id}");
+    }
+
+    public function formalPDF($id)
+    {
+        return $this->request->send('GET', "formal-pdf/{$id}");
+    }
 }
