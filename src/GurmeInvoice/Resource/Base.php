@@ -24,9 +24,9 @@ abstract class Base
         return $this->request->send('POST', $this->endpoint, $data);
     }
 
-    public function update($data)
+    public function patch($id, $data)
     {
-        return $this->request->send('PATCH', $this->endpoint, $data);
+        return $this->request->send('PATCH', $this->endpoint . '/' . $id, $data);
     }
 
     public function destroy($id)
