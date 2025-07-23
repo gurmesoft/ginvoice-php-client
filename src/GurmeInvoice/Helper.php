@@ -18,4 +18,9 @@ class Helper
     {
         return $this->request->send('POST', 'check/auth');
     }
+
+    public function fixAddress($address)
+    {
+        return $this->request->send('POST', 'fix-address', ['address' => $address]);
+    }
 }
