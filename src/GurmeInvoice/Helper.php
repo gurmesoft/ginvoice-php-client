@@ -19,8 +19,11 @@ class Helper
         return $this->request->send('POST', 'check/auth');
     }
 
-    public function fixAddress($address)
+    /**
+     * @param array $data ['address' => 'string', 'full_name' => 'string']
+     */
+    public function fixAddress($data)
     {
-        return $this->request->send('POST', 'fix-address', ['address' => $address]);
+        return $this->request->send('POST', 'fix-address', $data);
     }
 }
