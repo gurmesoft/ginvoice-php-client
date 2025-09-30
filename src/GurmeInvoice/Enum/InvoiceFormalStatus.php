@@ -2,24 +2,25 @@
 
 namespace GurmeInvoice\Enum;
 
-enum InvoiceFormalStatus: string
-{
-    case PENDING = 'pending';
-    case RUNNING = 'running';
-    case COMPLETED = 'completed';
-    case NOTREQUIRED = 'not_required';
-    case FAILED = 'failed';
-    case CANCELED = 'canceled';
+class InvoiceFormalStatus extends BaseEnum {
 
-    public function alias(): string
-    {
-        return match ($this) {
-            self::PENDING => 'Bekleniyor',
-            self::RUNNING => 'İşleniyor',
-            self::COMPLETED => 'Tamamlandı',
-            self::NOTREQUIRED => 'İşlem Gerekmiyor',
-            self::FAILED => 'Hatalı',
-            self::CANCELED => 'İptal Edildi',
-        };
-    }
+	public const PENDING     = 'pending';
+	public const RUNNING     = 'running';
+	public const COMPLETED   = 'completed';
+	public const NOTREQUIRED = 'not_required';
+	public const FAILED      = 'failed';
+	public const CANCELED    = 'canceled';
+
+	public static function alias( string $value ): string {
+		$aliases = [
+			self::PENDING     => 'Bekleniyor',
+			self::RUNNING     => 'İşleniyor',
+			self::COMPLETED   => 'Tamamlandı',
+			self::NOTREQUIRED => 'İşlem Gerekmiyor',
+			self::FAILED      => 'Hatalı',
+			self::CANCELED    => 'İptal Edildi',
+		];
+
+		return $aliases[ $value ] ?? $value;
+	}
 }

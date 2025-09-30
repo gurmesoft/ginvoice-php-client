@@ -2,57 +2,50 @@
 
 namespace GurmeInvoice;
 
-class Response
-{
-    private $response;
+class Response {
 
-    private $code;
+	private $response;
 
-    private $array = [];
+	private $code;
 
-    public function __construct($response, $code)
-    {
-        $this->response = $response;
-        $this->code = $code;
-    }
+	private $array = [];
 
-    public function status()
-    {
-        return $this->code;
-    }
+	public function __construct( $response, $code ) {
+		$this->response = $response;
+		$this->code     = $code;
+	}
 
-    public function body()
-    {
-        return $this->response;
-    }
+	public function status() {
+		return $this->code;
+	}
 
-    public function toArray($key = false)
-    {
-        $this->array = json_decode($this->response, true) ?: [];
+	public function body() {
+		return $this->response;
+	}
 
-        if (! $key) {
-            return $this->array;
-        }
+	public function toArray( $key = false ) {
+		$this->array = json_decode( $this->response, true ) ?: [];
 
-        if (array_key_exists($key, $this->array)) {
-            return $this->array[$key];
-        }
+		if ( ! $key ) {
+			return $this->array;
+		}
 
-        return false;
-    }
+		if ( array_key_exists( $key, $this->array ) ) {
+			return $this->array[ $key ];
+		}
 
-    public function json()
-    {
-        return json_decode($this->response) ?: false;
-    }
+		return false;
+	}
 
-    public function success()
-    {
-        return $this->code >= 200 && $this->code < 300;
-    }
+	public function json() {
+		return json_decode( $this->response ) ?: false;
+	}
 
-    public function errorMessage()
-    {
-        return $this->toArray('message');
-    }
+	public function success() {
+		return $this->code >= 200 && $this->code < 300;
+	}
+
+	public function errorMessage() {
+		return $this->toArray( 'message' );
+	}
 }

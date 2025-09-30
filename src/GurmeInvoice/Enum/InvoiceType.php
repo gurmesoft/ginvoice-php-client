@@ -2,28 +2,30 @@
 
 namespace GurmeInvoice\Enum;
 
-enum InvoiceType: string
+class InvoiceType extends BaseEnum
 {
-    case SATIS = 'SATIS';
-    case IADE = 'IADE';
-    case TEVKIFAT = 'TEVKIFAT';
-    case TEVKIFATIADE = 'TEVKIFATIADE';
-    case ISTISNA = 'ISTISNA';
-    case OZELMATRAH = 'OZELMATRAH';
-    case IHRACKAYITLI = 'IHRACKAYITLI';
-    case KONAKLAMAVERGISI = 'KONAKLAMAVERGISI';
+    public const SATIS            = 'SATIS';
+    public const IADE             = 'IADE';
+    public const TEVKIFAT         = 'TEVKIFAT';
+    public const TEVKIFATIADE     = 'TEVKIFATIADE';
+    public const ISTISNA          = 'ISTISNA';
+    public const OZELMATRAH       = 'OZELMATRAH';
+    public const IHRACKAYITLI     = 'IHRACKAYITLI';
+    public const KONAKLAMAVERGISI = 'KONAKLAMAVERGISI';
 
-    public function alias(): string
+    public static function alias(string $value): string
     {
-        return match ($this) {
-            self::SATIS => 'Satış',
-            self::IADE => 'İade',
-            self::TEVKIFAT => 'Tevkifat',
-            self::TEVKIFATIADE => 'Tevkifat İade',
-            self::ISTISNA => 'İstisna',
-            self::OZELMATRAH => 'Özel Matrah',
-            self::IHRACKAYITLI => 'İhracat Kayıtlı',
+        $aliases = [
+            self::SATIS            => 'Satış',
+            self::IADE             => 'İade',
+            self::TEVKIFAT         => 'Tevkifat',
+            self::TEVKIFATIADE     => 'Tevkifat İade',
+            self::ISTISNA          => 'İstisna',
+            self::OZELMATRAH       => 'Özel Matrah',
+            self::IHRACKAYITLI     => 'İhracat Kayıtlı',
             self::KONAKLAMAVERGISI => 'Konaklama Vergisi',
-        };
+        ];
+
+        return $aliases[$value] ?? $value;
     }
 }

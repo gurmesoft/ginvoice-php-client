@@ -2,22 +2,24 @@
 
 namespace GurmeInvoice\Enum;
 
-enum PaymentMethod: string
+class PaymentMethod extends BaseEnum
 {
-    case KREDIBANKAKARTI = 'credit_or_debit';
-    case EFTHAVALE = 'direct_transfer';
-    case KAPIDAODEME = 'cash_on_delivery';
-    case ODEMEARACISI = 'payment_agent';
-    case DIGER = 'other';
+    public const KREDIBANKAKARTI = 'credit_or_debit';
+    public const EFTHAVALE       = 'direct_transfer';
+    public const KAPIDAODEME     = 'cash_on_delivery';
+    public const ODEMEARACISI    = 'payment_agent';
+    public const DIGER           = 'other';
 
-    public function alias(): string
+    public static function alias(string $value): string
     {
-        return match ($this) {
+        $aliases = [
             self::KREDIBANKAKARTI => 'Kredi/Banka Kartı',
-            self::EFTHAVALE => 'EFT/Havale',
-            self::KAPIDAODEME => 'Kapıda Ödeme',
-            self::ODEMEARACISI => 'Ödeme Aracısı',
-            self::DIGER => 'Diğer',
-        };
+            self::EFTHAVALE       => 'EFT/Havale',
+            self::KAPIDAODEME     => 'Kapıda Ödeme',
+            self::ODEMEARACISI    => 'Ödeme Aracısı',
+            self::DIGER           => 'Diğer',
+        ];
+
+        return $aliases[$value] ?? $value;
     }
 }

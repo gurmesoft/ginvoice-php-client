@@ -2,28 +2,25 @@
 
 namespace GurmeInvoice;
 
-class Helper
-{
-    protected Options $options;
+class Helper {
 
-    protected Request $request;
+	protected Options $options;
 
-    public function __construct(Options $options)
-    {
-        $this->options = $options;
-        $this->request = new Request($this->options);
-    }
+	protected Request $request;
 
-    public function checkConnection()
-    {
-        return $this->request->send('POST', 'check/auth');
-    }
+	public function __construct( Options $options ) {
+		$this->options = $options;
+		$this->request = new Request( $this->options );
+	}
 
-    /**
-     * @param array $data ['address' => 'string', 'full_name' => 'string']
-     */
-    public function fixAddress($data)
-    {
-        return $this->request->send('POST', 'fix-address', $data);
-    }
+	public function checkConnection() {
+		return $this->request->send( 'POST', 'check/auth' );
+	}
+
+	/**
+	 * @param array $data ['address' => 'string', 'full_name' => 'string']
+	 */
+	public function fixAddress( $data ) {
+		return $this->request->send( 'POST', 'fix-address', $data );
+	}
 }

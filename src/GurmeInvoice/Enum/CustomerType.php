@@ -2,16 +2,17 @@
 
 namespace GurmeInvoice\Enum;
 
-enum CustomerType: string
-{
-    case COMPANY = 'company';
-    case PERSON = 'person';
+class CustomerType extends BaseEnum {
 
-    public function alias(): string
-    {
-        return match ($this) {
-            self::COMPANY => 'Tüzel Kişi',
-            self::PERSON => 'Gerçek Kişi',
-        };
-    }
+	public const COMPANY = 'company';
+	public const PERSON  = 'person';
+
+	public static function alias( string $value ): string {
+		$aliases = [
+			self::COMPANY => 'Tüzel Kişi',
+			self::PERSON  => 'Gerçek Kişi',
+		];
+
+		return $aliases[ $value ] ?? $value;
+	}
 }

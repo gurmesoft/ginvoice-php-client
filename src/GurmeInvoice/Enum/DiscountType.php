@@ -2,16 +2,17 @@
 
 namespace GurmeInvoice\Enum;
 
-enum DiscountType: string
-{
-    case PERCENTAGE = 'percentage';
-    case AMOUNT = 'amount';
+class DiscountType extends BaseEnum {
 
-    public function alias(): string
-    {
-        return match ($this) {
-            self::PERCENTAGE => 'Yüzde',
-            self::AMOUNT => 'Tutar',
-        };
-    }
+	public const PERCENTAGE = 'percentage';
+	public const AMOUNT     = 'amount';
+
+	public static function alias( string $value ): string {
+		$aliases = [
+			self::PERCENTAGE => 'Yüzde',
+			self::AMOUNT     => 'Tutar',
+		];
+
+		return $aliases[ $value ] ?? $value;
+	}
 }

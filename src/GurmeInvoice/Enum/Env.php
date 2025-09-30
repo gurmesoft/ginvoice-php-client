@@ -2,8 +2,12 @@
 
 namespace GurmeInvoice\Enum;
 
-enum Env: string
-{
-    case LIVE = 'live';
-    case TEST = 'test';
+class Env extends BaseEnum {
+
+	public const LIVE = 'live';
+	public const TEST = 'test';
+
+	public static function alias( string $value ): string {
+		return $value;
+	}
 }

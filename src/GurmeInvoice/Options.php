@@ -2,33 +2,29 @@
 
 namespace GurmeInvoice;
 
-class Options
-{
-    protected $apiKey;
+class Options {
 
-    protected $env = Enum\Env::LIVE;
+	protected $apiKey;
 
-    public function getApiKey()
-    {
-        return $this->apiKey;
-    }
+	protected $env = Enum\Env::LIVE;
 
-    public function setApiKey($apiKey): self
-    {
-        $this->apiKey = $apiKey;
+	public function getApiKey() {
+		return $this->apiKey;
+	}
 
-        return $this;
-    }
+	public function setApiKey( $apiKey ): self {
+		$this->apiKey = $apiKey;
 
-    public function getEnv()
-    {
-        return $this->env;
-    }
+		return $this;
+	}
 
-    public function setEnv(Enum\Env $env): self
-    {
-        $this->env = $env;
+	public function getEnv() {
+		return $this->env;
+	}
 
-        return $this;
-    }
+	public function setEnv( string $env ): self {
+		$this->env = $env;
+
+		return $this;
+	}
 }

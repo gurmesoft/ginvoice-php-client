@@ -2,61 +2,61 @@
 
 namespace GurmeInvoice\Enum;
 
-enum ProductUnit: string
+class ProductUnit extends BaseEnum
 {
-    case C62 = 'C62';
-    case DAY = 'DAY';
-    case MON = 'MON';
-    case ANN = 'ANN';
-    case HUR = 'HUR';
-    case D61 = 'D61';
-    case D62 = 'D62';
-    case PA = 'PA';
-    case BX = 'BX';
-    case MGM = 'MGM';
-    case GRM = 'GRM';
-    case KGM = 'KGM';
-    case LTR = 'LTR';
-    case TNE = 'TNE';
-    case NT = 'NT';
-    case GT = 'GT';
-    case MMT = 'MMT';
-    case CMT = 'CMT';
-    case MTR = 'MTR';
-    case KTM = 'KTM';
-    case MLT = 'MLT';
-    case MMQ = 'MMQ';
-    case CMK = 'CMK';
-    case CMQ = 'CMQ';
-    case MTK = 'MTK';
-    case MTQ = 'MTQ';
-    case KJO = 'KJO';
-    case CLT = 'CLT';
-    case CT = 'CT';
-    case KWH = 'KWH';
-    case MWH = 'MWH';
-    case D30 = 'D30';
-    case D40 = 'D40';
-    case LPA = 'LPA';
-    case B32 = 'B32';
-    case NCL = 'NCL';
-    case PR = 'PR';
-    case R9 = 'R9';
-    case SET = 'SET';
-    case T3 = 'T3';
-    case Q37 = 'Q37';
-    case Q39 = 'Q39';
-    case J39 = 'J39';
-    case G52 = 'G52';
-    case DZN = 'DZN';
-    case DMK = 'DMK';
-    case DMT = 'DMT';
-    case HAR = 'HAR';
-    case LM = 'LM';
+    public const C62 = 'C62';
+    public const DAY = 'DAY';
+    public const MON = 'MON';
+    public const ANN = 'ANN';
+    public const HUR = 'HUR';
+    public const D61 = 'D61';
+    public const D62 = 'D62';
+    public const PA  = 'PA';
+    public const BX  = 'BX';
+    public const MGM = 'MGM';
+    public const GRM = 'GRM';
+    public const KGM = 'KGM';
+    public const LTR = 'LTR';
+    public const TNE = 'TNE';
+    public const NT  = 'NT';
+    public const GT  = 'GT';
+    public const MMT = 'MMT';
+    public const CMT = 'CMT';
+    public const MTR = 'MTR';
+    public const KTM = 'KTM';
+    public const MLT = 'MLT';
+    public const MMQ = 'MMQ';
+    public const CMK = 'CMK';
+    public const CMQ = 'CMQ';
+    public const MTK = 'MTK';
+    public const MTQ = 'MTQ';
+    public const KJO = 'KJO';
+    public const CLT = 'CLT';
+    public const CT  = 'CT';
+    public const KWH = 'KWH';
+    public const MWH = 'MWH';
+    public const D30 = 'D30';
+    public const D40 = 'D40';
+    public const LPA = 'LPA';
+    public const B32 = 'B32';
+    public const NCL = 'NCL';
+    public const PR  = 'PR';
+    public const R9  = 'R9';
+    public const SET = 'SET';
+    public const T3  = 'T3';
+    public const Q37 = 'Q37';
+    public const Q39 = 'Q39';
+    public const J39 = 'J39';
+    public const G52 = 'G52';
+    public const DZN = 'DZN';
+    public const DMK = 'DMK';
+    public const DMT = 'DMT';
+    public const HAR = 'HAR';
+    public const LM  = 'LM';
 
-    public function alias(): string
+    public static function alias(string $value): string
     {
-        return match ($this) {
+        $aliases = [
             self::C62 => 'Adet',
             self::DAY => 'Gün',
             self::MON => 'Ay',
@@ -64,15 +64,15 @@ enum ProductUnit: string
             self::HUR => 'Saat',
             self::D61 => 'Dakika',
             self::D62 => 'Saniye',
-            self::PA => 'Paket',
-            self::BX => 'Kutu',
+            self::PA  => 'Paket',
+            self::BX  => 'Kutu',
             self::MGM => 'mg',
             self::GRM => 'g',
             self::KGM => 'kg',
             self::LTR => 'lt',
             self::TNE => 'ton',
-            self::NT => 'Net Ton',
-            self::GT => 'Gross ton',
+            self::NT  => 'Net Ton',
+            self::GT  => 'Gross ton',
             self::MMT => 'mm',
             self::CMT => 'cm',
             self::MTR => 'm',
@@ -85,7 +85,7 @@ enum ProductUnit: string
             self::MTQ => 'm3',
             self::KJO => 'kJ',
             self::CLT => 'cl',
-            self::CT => 'KARAT',
+            self::CT  => 'KARAT',
             self::KWH => 'KWH',
             self::MWH => 'MWH',
             self::D30 => 'Brüt kalori',
@@ -93,10 +93,10 @@ enum ProductUnit: string
             self::LPA => 'Saf alkol lt',
             self::B32 => 'kg.m2',
             self::NCL => 'Hücre adet',
-            self::PR => 'Çift',
-            self::R9 => '1000 m3',
+            self::PR  => 'Çift',
+            self::R9  => '1000 m3',
             self::SET => 'Set',
-            self::T3 => '1000 adet',
+            self::T3  => '1000 adet',
             self::Q37 => 'SCM',
             self::Q39 => 'NCM',
             self::J39 => 'mmBTU',
@@ -105,7 +105,9 @@ enum ProductUnit: string
             self::DMK => 'dm2',
             self::DMT => 'dm',
             self::HAR => 'ha',
-            self::LM => 'Metretül (LM)',
-        };
+            self::LM  => 'Metretül (LM)',
+        ];
+
+        return $aliases[$value] ?? $value;
     }
 }

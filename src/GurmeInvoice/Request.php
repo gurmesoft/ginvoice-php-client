@@ -2,51 +2,47 @@
 
 namespace GurmeInvoice;
 
-class Request
-{
-    protected $options;
+class Request {
 
-    public function __construct(Options $options)
-    {
-        $this->options = $options;
-    }
+	protected Options $options;
 
-    public function send($method, $endpoint, $data = []): Response
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->getUrl($endpoint));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->getHeaders());
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+	public function __construct( Options $options ) {
+		$this->options = $options;
+	}
 
-        if (in_array($method, ['POST', 'PUT', 'PATCH'])) {
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        }
+	public function send( $method, $endpoint, $data = [] ): Response {
+		$ch = curl_init();
+		curl_setopt( $ch, CURLOPT_URL, $this->getUrl( $endpoint ) );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt( $ch, CURLOPT_HTTPHEADER, $this->getHeaders() );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, false );
+		curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, $method );
 
-        $response = curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		if ( in_array( $method, [ 'POST', 'PUT', 'PATCH' ] ) ) {
+			curl_setopt( $ch, CURLOPT_POST, true );
+			curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode( $data ) );
+		}
 
-        curl_close($ch);
+		$response = curl_exec( $ch );
+		$code     = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 
-        return new Response($response, $code);
-    }
+		curl_close( $ch );
 
-    protected function getUrl($endpoint)
-    {
-        $domain = $this->options->getEnv()->value === 'live' ? 'app' : 'staging';
+		return new Response( $response, $code );
+	}
 
-        return "https://{$domain}.faturaentegrator.com/api/{$endpoint}";
-    }
+	protected function getUrl( $endpoint ) {
+		$domain = $this->options->getEnv() === 'live' ? 'app' : 'staging';
 
-    protected function getHeaders()
-    {
-        return [
-            'Content-Type: application/json',
-            'Accept: application/json',
-            'Authorization: Bearer ' . $this->options->getApiKey(),
-        ];
-    }
+		return "https://{$domain}.faturaentegrator.com/api/{$endpoint}";
+	}
+
+	protected function getHeaders() {
+		return [
+			'Content-Type: application/json',
+			'Accept: application/json',
+			'Authorization: Bearer ' . $this->options->getApiKey(),
+		];
+	}
 }

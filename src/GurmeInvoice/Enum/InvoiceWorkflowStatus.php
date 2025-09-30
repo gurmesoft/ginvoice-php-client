@@ -2,18 +2,20 @@
 
 namespace GurmeInvoice\Enum;
 
-enum InvoiceWorkflowStatus: string
+class InvoiceWorkflowStatus extends BaseEnum
 {
-    case PROCESSING = 'processing';
-    case FAILED = 'failed';
-    case COMPLETED = 'completed';
+    public const PROCESSING = 'processing';
+    public const FAILED     = 'failed';
+    public const COMPLETED  = 'completed';
 
-    public function alias(): string
+    public static function alias(string $value): string
     {
-        return match ($this) {
+        $aliases = [
             self::PROCESSING => 'Devam Ediyor',
-            self::FAILED => 'Hatalı',
-            self::COMPLETED => 'Başarılı',
-        };
+            self::FAILED     => 'Hatalı',
+            self::COMPLETED  => 'Başarılı',
+        ];
+
+        return $aliases[$value] ?? $value;
     }
 }
