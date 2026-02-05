@@ -23,4 +23,8 @@ class Helper {
 	public function fixAddress( $data ) {
 		return $this->request->send( 'POST', 'fix-address', $data );
 	}
+
+	public function saveSettingsWebhook( $data ) {
+		return $this->request->send( 'POST', 'helpers/settings-webhook', $data );
+	}
 }
