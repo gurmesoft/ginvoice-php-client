@@ -27,4 +27,8 @@ class Helper {
 	public function saveSettingsWebhook( $data ) {
 		return $this->request->send( 'POST', 'helpers/settings-webhook', $data );
 	}
+
+	public function profile() {
+		return $this->request->send( 'GET', 'helpers/profile' );
+	}
 }
