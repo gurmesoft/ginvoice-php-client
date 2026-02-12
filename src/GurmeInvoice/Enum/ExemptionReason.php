@@ -178,7 +178,7 @@ enum ExemptionReason: string
 			self::KDV341 => 'Afetzedelere Bağışlanacak Konutların İnşasına İlişkin İstisna (KDV)',
 			self::KDV342 => 'Genel Bütçeli Kamu İdarelerine Bağışlanacak Taşınmazların İnşasına İlişkin İstisna (KDV)',
 			self::KDV343 => 'Genel Bütçeli Kamu İdarelerine Bağışlanacak Konutların Yabancı Devlet Kurum ve Kuruluşlarına Teslimine İlişkin İstisna (KDV)',
-            self::KDV350 => 'Diğer',
+            self::KDV350 => 'Diğer İstisnalar (KDV)',
 			self::OTV101 => 'İhracat İstisnası (ÖTV)',
 			self::OTV102 => 'Diplomatik İstisna (ÖTV)',
 			self::OTV103 => 'Askeri Amaçlı İstisna (ÖTV)',
